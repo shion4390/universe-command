@@ -27,17 +27,17 @@ button,a,.btn{touch-action:manipulation}
 <body>
 <div class="shell">
 <aside class="side">
- <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.2</small></div></div>
+ <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.4</small></div></div>
  <div class="navlabel">MISSION CONTROL</div>
  <nav class="nav" id="nav">
   <button class="active" data-view="home"><span>⌂</span>ダッシュボード</button>
   <button data-view="academy"><span>⌘</span>学習室</button>
-  <button data-view="news"><span>✦</span>ニュースセンター</button>
   <button data-view="learning"><span>▤</span>学習記録</button>
   <button data-view="calendar"><span>▦</span>週間カレンダー</button>
   <button data-view="notes"><span>✎</span>研究ノート</button>
   <button data-view="themes"><span>◎</span>研究テーマ</button>
   <button data-view="tests"><span>◇</span>試験・成績</button>
+  <button data-view="news"><span>✦</span>ニュースセンター</button>
   <button data-view="discoveries"><span>✧</span>ニュース・発見</button>
   <button data-view="analytics"><span>⌁</span>学習グラフ</button>
   <button data-view="settings"><span>⚙</span>システム設定</button>
@@ -181,7 +181,7 @@ function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.t
 document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-view]');if(b)showView(b.dataset.view)});
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
 let editingStudyId=null;
-function editStudy(id){let x=data.studies.find(v=>v.id===id);if(!x)return;editingStudyId=id;let f=document.getElementById('studyForm');for(let k of ['date','minutes','category','xp','title','memo'])if(f.elements[k])f.elements[k].value=x[k]??'';document.querySelector('#studyModal h3').textContent='学習記録を編集';f.querySelector('button[type=submit]').textContent='変更を保存';openModal('studyModal')}
+function editStudy(id){let x=data.studies.find(v=>String(v.id)===String(id));if(!x){toast('編集する学習記録が見つかりません');return}editingStudyId=x.id;let f=document.getElementById('studyForm');for(let k of ['date','minutes','category','xp','title','memo']){if(f.elements[k])f.elements[k].value=x[k]??''}document.querySelector('#studyModal h3').textContent='学習記録を編集';let submit=f.querySelector('button[type=submit],button:not([type])');if(submit)submit.textContent='変更を保存';openModal('studyModal')}
 document.getElementById('studyForm').addEventListener('submit',e=>{e.preventDefault();let x=formObj(e.target);if(editingStudyId){data.studies=data.studies.map(v=>v.id===editingStudyId?{...v,...x,minutes:+x.minutes,xp:+x.xp}:v);editingStudyId=null;toast('学習記録を更新しました')}else{data.studies.push({...x,id:uid(),minutes:+x.minutes,xp:+x.xp});toast('学習記録を保存しました')}save();e.target.reset();document.querySelector('#studyModal h3').textContent='学習セッションを記録';e.target.querySelector('button[type=submit]').textContent='保存する';closeModal('studyModal')});
 document.getElementById('noteForm').addEventListener('submit',e=>{e.preventDefault();let x=formObj(e.target);if(x.id){data.notes=data.notes.map(n=>n.id===x.id?x:n)}else data.notes.unshift({...x,id:uid()});save();e.target.reset();closeModal('noteModal');toast('研究ノートを保存しました')});
 document.getElementById('themeForm').addEventListener('submit',e=>{e.preventDefault();let x=formObj(e.target);if(x.id)data.themes=data.themes.map(n=>n.id===x.id?x:n);else data.themes.unshift({...x,id:uid()});save();e.target.reset();closeModal('themeModal');toast('研究テーマを保存しました')});
