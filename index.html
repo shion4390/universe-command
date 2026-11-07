@@ -22,11 +22,12 @@ button,a,.btn{touch-action:manipulation}
 @media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:relative;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:4px 8px 10px}.nav{display:flex;overflow:auto;gap:4px}.navlabel,.sidefoot{display:none}.nav button{white-space:nowrap;width:auto;margin:0;padding:9px}.nav button span{width:auto;margin-right:5px}.main{padding:18px 14px 40px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.top{align-items:flex-start}.status{font-size:9px}.calendar{gap:3px}.day{padding:5px;min-height:95px}.dayhead{font-size:9px}.event{font-size:8px;padding:4px}}
 @media(max-width:520px){.hero{padding:19px;min-height:170px}.hero h2{font-size:20px}.statval{font-size:23px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.table{font-size:9px}.table th,.table td{padding:8px 4px}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="shell">
 <aside class="side">
- <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.1</small></div></div>
+ <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.2</small></div></div>
  <div class="navlabel">MISSION CONTROL</div>
  <nav class="nav" id="nav">
   <button class="active" data-view="home"><span>⌂</span>ダッシュボード</button>
@@ -41,10 +42,10 @@ button,a,.btn{touch-action:manipulation}
   <button data-view="analytics"><span>⌁</span>学習グラフ</button>
   <button data-view="settings"><span>⚙</span>システム設定</button>
  </nav>
- <div class="sidefoot">SYSTEM VERSION 2.1<br>RESPONSIVE UI<br>LOCAL STORAGE MODE<br>MISSION: UNDERSTAND THE UNIVERSE</div>
+ <div class="sidefoot">SYSTEM VERSION 2.2<br>RESPONSIVE UI<br>SUPABASE CLOUD SYNC<br>MISSION: UNDERSTAND THE UNIVERSE</div>
 </aside>
 <main class="main">
- <header class="top"><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div><div class="status"><i class="dot"></i> SYSTEM ONLINE</div></header>
+ <header class="top"><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div><div class="row"><div class="status" id="cloudStatus"><i class="dot"></i> LOCAL MODE</div><button class="btn secondary small" onclick="showView('settings')">アカウント</button></div></header>
  <section class="view active" id="home">
   <div class="hero"><div class="tag">MISSION STATUS : ACTIVE / BEYOND THE UNKNOWN</div><h2>未知の、その先へ。</h2><p>まだ誰も知らないことを知りたい。理解できないものを理解したい。そして、まだ誰も見つけていない答えに、自分の手でたどり着きたい。</p><div class="row"><button class="btn" onclick="showView('academy')">学習を始める</button><button class="btn secondary" onclick="showView('notes')">研究ノートを開く</button></div></div>
   <div class="card manifesto" style="margin-top:14px">
@@ -114,8 +115,23 @@ button,a,.btn{touch-action:manipulation}
  </section>
  <section class="view" id="settings">
   <div class="sectionhead"><div><h3>システム設定</h3><div class="muted">保存・バックアップ・クラウド同期。</div></div></div>
-  <div class="card" style="margin-bottom:14px"><h3 style="font-size:13px">データ保存状態</h3><div class="syncbox"><strong>LOCAL STORAGE MODE</strong><br>現在のデータはこのブラウザ・端末内に保存されます。同じブラウザで再度開くと復元されますが、別端末との自動同期はまだ有効ではありません。</div><div class="row" style="margin-top:12px"><button class="btn" onclick="exportData()">データをバックアップ（JSON）</button><label class="btn secondary" for="importFile">バックアップを復元</label><input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importData(event)"></div></div>
-  <div class="card" style="margin-bottom:14px"><h3 style="font-size:13px">クラウド同期について</h3><p class="muted" style="line-height:1.8">複数端末同期には、Supabase等のデータベース、ログイン認証、アクセス権限の設定が必要です。この試作版には接続情報が入っていないため、クラウドへの送信は行いません。接続時は個人ごとのデータ保護とバックアップを設定します。</p><div class="pill">CLOUD SYNC : NOT CONFIGURED</div></div>
+  <div class="card" style="margin-bottom:14px">
+   <h3 style="font-size:13px">アカウント / クラウド同期</h3>
+   <div id="authLoggedOut">
+    <p class="muted" style="line-height:1.8">メールアドレスとパスワードでログインすると、学習記録・XP・研究ノートなどをこのアカウントに同期するよ。スマホとPCで同じアカウントを使ってね。</p>
+    <form id="authForm" class="formgrid">
+     <div class="field full"><label>メールアドレス</label><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"></div>
+     <div class="field full"><label>パスワード（6文字以上）</label><input type="password" name="password" autocomplete="current-password" minlength="6" required placeholder="パスワード"></div>
+     <div class="field full actions"><button type="button" class="btn secondary" onclick="signUp()">新規登録</button><button type="submit" class="btn">ログイン</button></div>
+    </form>
+    <p class="muted" id="authMessage" aria-live="polite"></p>
+   </div>
+   <div id="authLoggedIn" style="display:none">
+    <div class="syncbox"><strong>クラウド同期が有効</strong><br><span id="accountEmail"></span><br>このアカウントのデータをSupabaseに保存中。別端末でも同じアカウントでログインしてね。</div>
+    <div class="actions"><button class="btn secondary" onclick="syncNow()">今すぐ同期</button><button class="btn danger" onclick="signOut()">ログアウト</button></div>
+   </div>
+  </div>
+  <div class="card" style="margin-bottom:14px"><h3 style="font-size:13px">データ保存・バックアップ</h3><div class="syncbox"><strong id="storageMode">LOCAL STORAGE + CLOUD BACKUP</strong><br>ログイン前のデータはこの端末に保存されます。初回ログイン時は端末内の記録とクラウド上の記録をIDで統合します。念のため、同期前にJSONバックアップを作成してね。</div><div class="row" style="margin-top:12px"><button class="btn" onclick="exportData()">データをバックアップ（JSON）</button><label class="btn secondary" for="importFile">バックアップを復元</label><input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importData(event)"></div></div>
   <div class="card"><h3 style="font-size:13px">データの初期化</h3><p class="muted">すべての学習記録・ノート・テーマ・成績・予定を削除します。実行前にバックアップしてください。</p><button class="btn danger" onclick="resetData()">全データを削除</button></div>
  </section>
  <footer class="muted" style="text-align:center;padding:28px 0 8px">UNIVERSE COMMAND · KEEP QUESTIONING THE COSMOS</footer>
@@ -129,10 +145,30 @@ button,a,.btn{touch-action:manipulation}
 <div class="toast" id="toast"></div>
 <script>
 const KEY='universeCommand_v1';
-let data=load(),weekOffset=0;
+const LESSON_KEY='uc_lessons_done';
+const SUPABASE_URL='https://drcxjdncrkxobymukhpt.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_r8XVaLikBzdNYNuSuFCC-Q_cpHYCHl7';
+const supabaseClient = window.supabase?.createClient
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+  : null;
+let data=load(),weekOffset=0,currentUser=null,cloudTimer=null,applyingRemote=false;
 function fresh(){return {studies:[],notes:[],themes:[],events:[],tests:[],discoveries:[]}}
 function load(){try{return {...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return fresh()}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
+function lessonDone(){try{return JSON.parse(localStorage.getItem(LESSON_KEY)||'[]')}catch(e){return []}}
+function persistLocal(){localStorage.setItem(KEY,JSON.stringify(data))}
+function save(){persistLocal();renderAll();if(currentUser&&!applyingRemote)scheduleCloudSave()}
+function scheduleCloudSave(){clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>syncNow(),900)}
+function setCloudStatus(label,ok=false){let el=document.getElementById('cloudStatus');if(el){el.innerHTML='<i class="dot"></i> '+esc(label);el.style.color=ok?'var(--green)':'var(--amber)'}}
+function showAuthMessage(message){let el=document.getElementById('authMessage');if(el)el.textContent=message}
+function updateAuthUI(){let out=document.getElementById('authLoggedOut'),inside=document.getElementById('authLoggedIn');if(!out||!inside)return;out.style.display=currentUser?'none':'block';inside.style.display=currentUser?'block':'none';if(currentUser){document.getElementById('accountEmail').textContent=currentUser.email||'ログイン中';setCloudStatus('CLOUD SYNC',true)}else setCloudStatus('LOCAL MODE',false)}
+function mergeArrays(localArr,remoteArr){let map=new Map();[...(remoteArr||[]),...(localArr||[])].forEach(x=>{if(x&&x.id)map.set(x.id,x)});return [...map.values()]}
+function mergeData(remote){let local=data,merged={};for(let k of Object.keys(fresh()))merged[k]=mergeArrays(local[k]||[],remote?.[k]||[]);data=merged;let ld=lessonDone(),rd=remote?.lessonDone||[];localStorage.setItem(LESSON_KEY,JSON.stringify([...new Set([...rd,...ld])]));persistLocal();renderAll()}
+async function syncNow(){if(!supabaseClient||!currentUser||applyingRemote)return;clearTimeout(cloudTimer);setCloudStatus('SYNCING...',false);const payload={...data,lessonDone:lessonDone()};const {error}=await supabaseClient.from('user_data').upsert({user_id:currentUser.id,data:payload,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error){setCloudStatus('SYNC ERROR',false);toast('同期できませんでした：'+error.message)}else{setCloudStatus('CLOUD SYNC',true);toast('クラウドに同期したよ')}}
+async function pullCloud(){if(!supabaseClient||!currentUser)return;setCloudStatus('SYNCING...',false);const {data:row,error}=await supabaseClient.from('user_data').select('data').eq('user_id',currentUser.id).maybeSingle();if(error){setCloudStatus('SYNC ERROR',false);toast('クラウド読み込み失敗：'+error.message);return}if(row?.data){mergeData(row.data);await syncNow()}else{await syncNow()}}
+async function signUp(){if(!supabaseClient){showAuthMessage('接続ライブラリを読み込めませんでした。ページを再読み込みしてね。');return}const form=document.getElementById('authForm');if(!form.reportValidity())return;let v=formObj(form);showAuthMessage('登録中...');const {data:result,error}=await supabaseClient.auth.signUp({email:v.email,password:v.password});if(error){showAuthMessage(error.message);return}showAuthMessage(result.session?'登録完了！ログイン状態を確認中。':'確認メールを送ったよ。メール内のリンクを開いてからログインしてね。')}
+async function signIn(e){e?.preventDefault();if(!supabaseClient){showAuthMessage('接続ライブラリを読み込めませんでした。ページを再読み込みしてね。');return}let v=formObj(document.getElementById('authForm'));showAuthMessage('ログイン中...');const {error}=await supabaseClient.auth.signInWithPassword({email:v.email,password:v.password});if(error)showAuthMessage(error.message)}
+async function signOut(){if(!supabaseClient)return;const {error}=await supabaseClient.auth.signOut();if(error){toast('ログアウト失敗：'+error.message);return}currentUser=null;updateAuthUI();toast('ログアウトしたよ')}
+async function initAuth(){if(!supabaseClient){setCloudStatus('SDK ERROR',false);return}document.getElementById('authForm')?.addEventListener('submit',signIn);const {data:sessionData}=await supabaseClient.auth.getSession();currentUser=sessionData.session?.user||null;updateAuthUI();if(currentUser)await pullCloud();supabaseClient.auth.onAuthStateChange(async(_event,session)=>{let next=session?.user||null;if(next?.id!==currentUser?.id){currentUser=next;updateAuthUI();if(currentUser)await pullCloud();else setCloudStatus('LOCAL MODE',false)}})}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function today(){return new Date().toISOString().slice(0,10)}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -199,5 +235,6 @@ function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'app
 function importData(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);data={...fresh(),...x};save();toast('バックアップを復元しました')}catch(err){alert('ファイルを読み込めませんでした')}};r.readAsText(file)}
 function resetData(){if(confirm('本当にすべてのデータを削除しますか？この操作は取り消せません。')){data=fresh();save();toast('データを初期化しました')}}
 renderAll();
+initAuth();
 </script>
 </body></html>
