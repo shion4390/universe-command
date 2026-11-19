@@ -27,11 +27,13 @@ button,a,.btn{touch-action:manipulation}
 <body>
 <div class="shell">
 <aside class="side">
- <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.4</small></div></div>
+ <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL LEARNING OS · V3.0</small></div></div>
  <div class="navlabel">MISSION CONTROL</div>
  <nav class="nav" id="nav">
   <button class="active" data-view="home"><span>⌂</span>ダッシュボード</button>
-  <button data-view="academy"><span>⌘</span>学習室</button>
+  <button data-view="academy"><span>⌘</span>宇宙学習室</button>
+  <button data-view="music"><span>♫</span>音楽制作室</button>
+  <button data-view="art"><span>✧</span>イラスト教室</button>
   <button data-view="learning"><span>▤</span>学習記録</button>
   <button data-view="calendar"><span>▦</span>週間カレンダー</button>
   <button data-view="notes"><span>✎</span>研究ノート</button>
@@ -76,6 +78,46 @@ button,a,.btn{touch-action:manipulation}
   <div class="card" style="margin-top:14px"><h3 style="font-size:13px">ChatGPT 研究チューター</h3><p class="muted" style="line-height:1.8">講義の疑問、数式の途中式、別の説明方法、追加問題などを質問できるよ。下のボタンで質問文をコピーしてChatGPTに送れる。</p><div class="field"><label>質問・分からないところ</label><textarea id="tutorQuestion" placeholder="例：光年と光行時間の違いを、具体例を使ってもう一度説明して。"></textarea></div><div class="actions"><button class="btn secondary" onclick="copyTutorPrompt()">質問文をコピー</button><button class="btn" onclick="openTutor()">ChatGPTを開く ↗</button></div></div>
   <div class="modal" id="lessonModal"><div class="modalbox"><div class="row" style="justify-content:space-between"><span class="pill">ACADEMY LESSON</span><button class="btn secondary small" onclick="closeModal('lessonModal')">閉じる</button></div><div id="lessonContent"></div><div class="actions"><button class="btn secondary" onclick="askLessonTutor()">この講義をChatGPTに質問</button><button class="btn" id="completeLessonBtn">講義を完了する · +20 XP</button></div></div></div>
  </section>
+ 
+ <section class="view" id="music">
+  <div class="hero"><div class="tag">MUSIC PRODUCTION / CREATIVE STUDIO</div><h2>音を組み立て、自分だけの世界を作る。</h2><p>音楽理論の動画学習とFL Studioでの実践を組み合わせ、ピアノ・シンセを中心にゲームやアニメのBGMを制作する。</p><div class="row"><span class="pill">FL Studio Fruity Edition</span><span class="pill green">理論＋実践</span></div></div>
+  <div class="sectionhead"><div><h3>制作カリキュラム</h3><div class="muted">動画で学び、ここで復習し、FL Studioで音にする。</div></div><span class="pill">8 STAGES</span></div>
+  <div class="grid two">
+   <div class="card"><span class="pill green">STAGE 01 · 学習中</span><h3 style="font-size:14px">音楽の基礎</h3><p class="muted">音名・半音と全音・メジャー／マイナー・音程・リズム。おざしんミュージックの動画を順番に視聴。</p><p class="muted"><b>学習済み：</b>半音・全音、メジャー・マイナー</p></div>
+   <div class="card"><span class="pill">STAGE 02</span><h3 style="font-size:14px">メロディ制作</h3><p class="muted">旋律・フレーズ・反復・展開。短いピアノメロディを作る。</p></div>
+   <div class="card"><span class="pill">STAGE 03</span><h3 style="font-size:14px">コード・和声</h3><p class="muted">三和音・四和音・コード進行・転回形。メロディに和音をつける。</p></div>
+   <div class="card"><span class="pill">STAGE 04</span><h3 style="font-size:14px">伴奏・リズム・ベース</h3><p class="muted">ピアノ伴奏・アルペジオ・ベース・ドラム。短い曲を完成させる。</p></div>
+   <div class="card"><span class="pill">STAGE 05</span><h3 style="font-size:14px">シンセサイザー・音作り</h3><p class="muted">波形・ADSR・フィルター・LFO・エフェクト。自分の音色を作る。</p></div>
+   <div class="card"><span class="pill">STAGE 06</span><h3 style="font-size:14px">編曲・オーケストレーション</h3><p class="muted">音域・楽器の役割・パッド・ストリングス・展開を学ぶ。</p></div>
+   <div class="card"><span class="pill">STAGE 07</span><h3 style="font-size:14px">ゲーム・戦闘BGM</h3><p class="muted">緊張感・疾走感・盛り上がり・シーンに合わせた構成を作る。</p></div>
+   <div class="card"><span class="pill">STAGE 08</span><h3 style="font-size:14px">ミックス・公開</h3><p class="muted">音量・EQ・空間表現・書き出し・YouTube投稿を学ぶ。</p></div>
+  </div>
+  <div class="grid two" style="margin-top:14px">
+   <div class="card"><h3 style="font-size:13px">学習セッションを記録</h3><form id="musicSessionForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>学習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field full"><label>学習内容・動画タイトル</label><input name="title" required placeholder="例：ダイアトニックコードの仕組み"></div><div class="field full"><label>理解したこと・FL Studioで試したこと</label><textarea name="memo" placeholder="分かったこと、まだ曖昧なこと、作った音など"></textarea></div><div class="field full actions"><button class="btn">学習を保存</button></div></form></div>
+   <div class="card"><h3 style="font-size:13px">音楽ノートを追加</h3><form id="musicNoteForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>種類</label><select name="kind"><option>理論メモ</option><option>作曲アイデア</option><option>音色・設定</option><option>作品メモ</option><option>次回の課題</option></select></div><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：切ないピアノ曲のコード案"></div><div class="field full"><label>ノート</label><textarea name="body" required placeholder="学んだこと・アイデア・次に試すこと"></textarea></div><div class="field full actions"><button class="btn">ノートを保存</button></div></form></div>
+  </div>
+  <div class="grid two" style="margin-top:14px"><div class="card"><div class="sectionhead" style="margin-top:0"><h3>学習履歴</h3><span class="pill" id="musicSessionCount">0件</span></div><div id="musicSessionsList" class="muted">まだ記録はありません。</div></div><div class="card"><div class="sectionhead" style="margin-top:0"><h3>音楽ノート</h3><span class="pill" id="musicNoteCount">0件</span></div><div id="musicNotesList" class="muted">まだノートはありません。</div></div></div>
+ </section>
+ <section class="view" id="art">
+  <div class="hero"><div class="tag">ILLUSTRATION / VISUAL ARTS STUDIO</div><h2>頭の中の景色を、一枚の絵に。</h2><p>観察・人体・構図・光と色を段階的に学び、納得できる作品を自分の力で描けるようになる。</p><div class="row"><span class="pill">基礎練習＋作品制作</span><span class="pill green">添削・振り返り</span></div></div>
+  <div class="sectionhead"><div><h3>イラストカリキュラム</h3><div class="muted">練習した内容と作品の改善点を記録する。</div></div><span class="pill">8 STAGES</span></div>
+  <div class="grid two">
+   <div class="card"><span class="pill green">STAGE 01 · 基礎</span><h3 style="font-size:14px">線・形・立体・観察</h3><p class="muted">形を単純化して捉える。線の強弱、箱・球・円柱、観察練習。</p></div>
+   <div class="card"><span class="pill">STAGE 02</span><h3 style="font-size:14px">顔・人体構造</h3><p class="muted">頭部の立体、顔の角度、骨格、筋肉、手や身体の構造。</p></div>
+   <div class="card"><span class="pill">STAGE 03</span><h3 style="font-size:14px">パース・構図</h3><p class="muted">奥行き、視線誘導、画面設計、キャラクターと背景の配置。</p></div>
+   <div class="card"><span class="pill">STAGE 04</span><h3 style="font-size:14px">光・影・色彩</h3><p class="muted">光源、陰影、色相・明度・彩度、空気感と質感。</p></div>
+   <div class="card"><span class="pill">STAGE 05</span><h3 style="font-size:14px">キャラクター表現</h3><p class="muted">表情、ポーズ、衣服、髪、キャラクターらしさ。</p></div>
+   <div class="card"><span class="pill">STAGE 06</span><h3 style="font-size:14px">背景・空間演出</h3><p class="muted">背景美術、環境光、奥行き、時間帯や雰囲気の表現。</p></div>
+   <div class="card"><span class="pill">STAGE 07</span><h3 style="font-size:14px">一枚絵の完成</h3><p class="muted">ラフから線画・塗り・仕上げまで、作品を完成させる。</p></div>
+   <div class="card"><span class="pill">STAGE 08</span><h3 style="font-size:14px">作品公開・発展</h3><p class="muted">ポートフォリオ、SNS投稿、依頼・グッズなどの可能性を学ぶ。</p></div>
+  </div>
+  <div class="grid two" style="margin-top:14px">
+   <div class="card"><h3 style="font-size:13px">練習・制作を記録</h3><form id="artSessionForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>練習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field full"><label>練習内容・作品名</label><input name="title" required placeholder="例：顔の角度・煽り構図の練習"></div><div class="field full"><label>できたこと・改善点</label><textarea name="memo" placeholder="良かった点、直したい点、次に試すこと"></textarea></div><div class="field full actions"><button class="btn">記録を保存</button></div></form></div>
+   <div class="card"><h3 style="font-size:13px">イラストノートを追加</h3><form id="artNoteForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>種類</label><select name="kind"><option>技法メモ</option><option>構図アイデア</option><option>色・光の研究</option><option>作品の振り返り</option><option>次回の課題</option></select></div><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：夜の自販機の光の表現"></div><div class="field full"><label>ノート</label><textarea name="body" required placeholder="気づいたこと・参考にした表現・次に試すこと"></textarea></div><div class="field full actions"><button class="btn">ノートを保存</button></div></form></div>
+  </div>
+  <div class="grid two" style="margin-top:14px"><div class="card"><div class="sectionhead" style="margin-top:0"><h3>練習履歴</h3><span class="pill" id="artSessionCount">0件</span></div><div id="artSessionsList" class="muted">まだ記録はありません。</div></div><div class="card"><div class="sectionhead" style="margin-top:0"><h3>イラストノート</h3><span class="pill" id="artNoteCount">0件</span></div><div id="artNotesList" class="muted">まだノートはありません。</div></div></div>
+ </section>
+
  <section class="view" id="news">
   <div class="sectionhead"><div><h3>宇宙ニュースセンター</h3><div class="muted">公式機関の最新情報を確認し、気になった記事を発見記録へ。</div></div><span class="pill">OFFICIAL SOURCES</span></div>
   <div class="syncbox" style="margin-bottom:14px"><strong>情報の扱い：</strong>ここから公式サイトへ移動できるよ。現在の試作版はニュース見出しを自動取得していないため、記事の内容・日付はリンク先で確認してね。</div>
@@ -134,7 +176,7 @@ button,a,.btn{touch-action:manipulation}
   <div class="card" style="margin-bottom:14px"><h3 style="font-size:13px">データ保存・バックアップ</h3><div class="syncbox"><strong id="storageMode">LOCAL STORAGE + CLOUD BACKUP</strong><br>ログイン前のデータはこの端末に保存されます。初回ログイン時は端末内の記録とクラウド上の記録をIDで統合します。念のため、同期前にJSONバックアップを作成してね。</div><div class="row" style="margin-top:12px"><button class="btn" onclick="exportData()">データをバックアップ（JSON）</button><label class="btn secondary" for="importFile">バックアップを復元</label><input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importData(event)"></div></div>
   <div class="card"><h3 style="font-size:13px">データの初期化</h3><p class="muted">すべての学習記録・ノート・テーマ・成績・予定を削除します。実行前にバックアップしてください。</p><button class="btn danger" onclick="resetData()">全データを削除</button></div>
  </section>
- <footer class="muted" style="text-align:center;padding:28px 0 8px">UNIVERSE COMMAND · KEEP QUESTIONING THE COSMOS</footer>
+ <footer class="muted" style="text-align:center;padding:28px 0 8px">UNIVERSE COMMAND · LEARN · CREATE · DISCOVER</footer>
 </main></div>
 <div class="modal" id="studyModal"><div class="modalbox"><h3>学習セッションを記録</h3><form id="studyForm" class="formgrid"><div class="field"><label>学習日</label><input type="date" name="date" required></div><div class="field"><label>学習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field"><label>学習カテゴリ</label><select name="category"><option>講義</option><option>数学・物理演習</option><option>復習</option><option>研究・調査</option><option>論文読解</option></select></div><div class="field"><label>獲得XP</label><input type="number" name="xp" min="0" value="20"></div><div class="field full"><label>学習内容</label><input name="title" placeholder="例：光速と光年について学習" required></div><div class="field full"><label>理解したこと・メモ</label><textarea name="memo" placeholder="今日分かったこと、疑問など"></textarea></div><div class="field full actions"><button type="button" class="btn secondary" onclick="closeModal('studyModal')">キャンセル</button><button class="btn">保存する</button></div></form></div></div>
 <div class="modal" id="noteModal"><div class="modalbox"><h3>研究ノート</h3><form id="noteForm" class="formgrid"><input type="hidden" name="id"><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：ダークマターの正体について"></div><div class="field"><label>分類</label><select name="type"><option>疑問</option><option>仮説</option><option>検証</option><option>考察</option><option>学習メモ</option></select></div><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field full"><label>内容</label><textarea name="body" required placeholder="疑問・根拠・考えたことを記録"></textarea></div><div class="field full actions"><button type="button" class="btn secondary" onclick="closeModal('noteModal')">キャンセル</button><button class="btn">保存する</button></div></form></div></div>
@@ -152,7 +194,7 @@ const supabaseClient = window.supabase?.createClient
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
 let data=load(),weekOffset=0,currentUser=null,cloudTimer=null,applyingRemote=false;
-function fresh(){return {studies:[],notes:[],themes:[],events:[],tests:[],discoveries:[]}}
+function fresh(){return {studies:[],notes:[],themes:[],events:[],tests:[],discoveries:[],musicSessions:[],musicNotes:[],artSessions:[],artNotes:[]}}
 function load(){try{return {...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return fresh()}}
 function lessonDone(){try{return JSON.parse(localStorage.getItem(LESSON_KEY)||'[]')}catch(e){return []}}
 function persistLocal(){localStorage.setItem(KEY,JSON.stringify(data))}
@@ -177,7 +219,7 @@ function toast(s){let t=document.getElementById('toast');t.textContent=s;t.style
 function openModal(id){let m=document.getElementById(id);m.classList.add('open');let f=m.querySelector('form');if(f&&!f.elements.date?.value&&f.elements.date)f.elements.date.value=today()}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function formObj(f){return Object.fromEntries(new FormData(f).entries())}
-function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'学習室',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];renderAll();window.scrollTo(0,0)}
+function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'音楽制作室',art:'イラスト教室',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];renderAll();window.scrollTo(0,0)}
 document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-view]');if(b)showView(b.dataset.view)});
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
 let editingStudyId=null;
@@ -188,6 +230,15 @@ document.getElementById('themeForm').addEventListener('submit',e=>{e.preventDefa
 document.getElementById('eventForm').addEventListener('submit',e=>{e.preventDefault();data.events.push({...formObj(e.target),id:uid()});save();e.target.reset();closeModal('eventModal');toast('予定を追加しました')});
 document.getElementById('testForm').addEventListener('submit',e=>{e.preventDefault();data.tests.unshift({...formObj(e.target),id:uid(),score:+e.target.score.value});save();e.target.reset();closeModal('testModal');toast('試験結果を保存しました')});
 document.getElementById('discoveryForm').addEventListener('submit',e=>{e.preventDefault();data.discoveries.unshift({...formObj(e.target),id:uid()});save();e.target.reset();closeModal('discoveryModal');toast('記録しました')});
+function bindRoomForm(formId,key,note=false){let form=document.getElementById(formId);if(!form)return;form.addEventListener('submit',e=>{e.preventDefault();let item={...formObj(e.target),id:uid()};if(!note)item.minutes=+item.minutes;data[key].unshift(item);save();e.target.reset();toast('学習ノートを保存しました')})}
+bindRoomForm('musicSessionForm','musicSessions');
+bindRoomForm('musicNoteForm','musicNotes',true);
+bindRoomForm('artSessionForm','artSessions');
+bindRoomForm('artNoteForm','artNotes',true);
+function renderRoom(prefix){let sessions=data[prefix+'Sessions']||[],notes=data[prefix+'Notes']||[];let sc=document.getElementById(prefix+'SessionsList'),nc=document.getElementById(prefix+'NotesList');document.getElementById(prefix+'SessionCount').textContent=sessions.length+'件';document.getElementById(prefix+'NoteCount').textContent=notes.length+'件';sc.innerHTML=sessions.length?sessions.map(x=>'<div class="listitem"><b>'+esc(x.title)+'</b><p>'+fmt(x.date)+' · '+x.minutes+'分</p><p>'+esc(x.memo||'')+'</p></div>').join(''):'<div class="empty">まだ記録はありません。</div>';nc.innerHTML=notes.length?notes.map(x=>'<div class="listitem"><span class="pill">'+esc(x.kind)+'</span><b>'+esc(x.title)+'</b><p>'+fmt(x.date)+'</p><p style="white-space:pre-wrap">'+esc(x.body)+'</p></div>').join(''):'<div class="empty">まだノートはありません。</div>'}
+function renderMusicRoom(){renderRoom('music')}
+function renderArtRoom(){renderRoom('art')}
+
 function xpTotal(){return data.studies.reduce((a,x)=>a+(+x.xp||0),0)}
 function rankFor(x){let thresholds=[0,100,300,600,1000,1600,2400,3500];let names=['宇宙学習者','基礎科学修得者','物理学実践者','天文学探究者','宇宙物理研究候補','研究者への道','独立研究への挑戦','宇宙研究エキスパート'];let i=0;for(let j=0;j<thresholds.length;j++)if(x>=thresholds[j])i=j;let next=thresholds[Math.min(i+1,thresholds.length-1)]||thresholds[i]+1000;let base=thresholds[i];return {i,name:names[i],base,next,pct:i===7?100:Math.min(100,(x-base)/(next-base)*100)}}
 function renderHome(){let xp=xpTotal(),r=rankFor(xp);document.getElementById('level').textContent='LEVEL '+(r.i+1);document.getElementById('rank').textContent=r.name;document.getElementById('xp').textContent=xp+' XP';document.getElementById('levelbar').style.width=r.pct+'%';document.getElementById('sessions').textContent=data.studies.length;document.getElementById('noteCount').textContent=data.notes.length;let recent=[...data.studies].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);document.getElementById('recentLearning').innerHTML=recent.length?recent.map(x=>`<div class="listitem"><b>${esc(x.title)}</b><p>${fmt(x.date)} · ${esc(x.category)} · ${x.minutes}分 · +${x.xp} XP</p></div>`).join(''):'まだ学習記録はありません。';let th=data.themes.filter(x=>x.status!=='完了').slice(0,3);document.getElementById('homeThemes').innerHTML=th.length?th.map(x=>`<div class="mission"><div><b>${esc(x.title)}</b><small>${esc(x.field)}</small></div><span class="pill">${esc(x.status)}</span></div>`).join(''):'研究テーマはまだありません。';drawChart('miniChart',14)}
@@ -229,7 +280,7 @@ function copyTutorPrompt(){let t=tutorText();if(navigator.clipboard?.writeText)n
 function openTutor(){copyTutorPrompt();window.open('https://chatgpt.com/','_blank','noopener')}
 function askLessonTutor(){document.getElementById('tutorQuestion').value=`${activeLesson.chapter}「${activeLesson.title}」について、数式の導出と具体例を使って詳しく説明して。理解度を確認する問題も出して。`;closeModal('lessonModal');showView('academy');document.getElementById('tutorQuestion').focus()}
 
-function renderAll(){renderHome();renderAcademy();renderLearning();renderNotes();renderThemes();renderTests();renderDiscoveries();renderCalendar();renderAnalytics()}
+function renderAll(){renderHome();renderAcademy();renderMusicRoom();renderArtRoom();renderLearning();renderNotes();renderThemes();renderTests();renderDiscoveries();renderCalendar();renderAnalytics()}
 function del(type,id){if(!confirm('この記録を削除しますか？'))return;data[type]=data[type].filter(x=>x.id!==id);save();toast('削除しました')}
 function editNote(id){let n=data.notes.find(x=>x.id===id),f=document.getElementById('noteForm');Object.keys(n).forEach(k=>{if(f.elements[k])f.elements[k].value=n[k]});openModal('noteModal')}
 function editTheme(id){let n=data.themes.find(x=>x.id===id),f=document.getElementById('themeForm');Object.keys(n).forEach(k=>{if(f.elements[k])f.elements[k].value=n[k]});openModal('themeModal')}
