@@ -316,7 +316,7 @@ function showView(v){
  document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));
  document.querySelectorAll('.nav button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));
  const switcher=document.getElementById('areaSwitch');
- if(switcher){switcher.value=['music','art','academy'].includes(v)?v:'academy';switcher.style.display=['music','art','academy'].includes(v)?'':'none'}
+ if(switcher){switcher.value=['music','art'].includes(v)?v:'academy';switcher.style.display=''}
  document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'MUSIC STUDIO',art:'ILLUSTRATION STUDIO',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];
  renderAll();window.scrollTo(0,0);
 }
