@@ -21,6 +21,44 @@ button,a,.btn{touch-action:manipulation}
 @media(max-width:520px){.nav{padding-bottom:4px;scrollbar-width:thin}.nav button{font-size:11px;padding:10px 11px}.top{gap:8px}.top h1{font-size:21px}.status{padding:7px 9px}.manifesto{border-radius:13px}.manifesto h2{line-height:1.35}.hero p{font-size:12px}}
 @media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:relative;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:4px 8px 10px}.nav{display:flex;overflow:auto;gap:4px}.navlabel,.sidefoot{display:none}.nav button{white-space:nowrap;width:auto;margin:0;padding:9px}.nav button span{width:auto;margin-right:5px}.main{padding:18px 14px 40px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.top{align-items:flex-start}.status{font-size:9px}.calendar{gap:3px}.day{padding:5px;min-height:95px}.dayhead{font-size:9px}.event{font-size:8px;padding:4px}}
 @media(max-width:520px){.hero{padding:19px;min-height:170px}.hero h2{font-size:20px}.statval{font-size:23px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.table{font-size:9px}.table th,.table td{padding:8px 4px}}
+
+/* Independent creative studio modes */
+.top-left{align-items:center}
+.gateway{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:9px;min-height:190px;cursor:pointer;transition:transform .18s,border-color .18s}
+.gateway:hover{transform:translateY(-3px);border-color:var(--violet)}
+.gateway-icon{font-size:30px;color:var(--violet)}
+.gateway-kicker{font-size:9px;letter-spacing:2px;color:var(--muted)}
+.gateway strong{font-size:20px;letter-spacing:1.5px;color:var(--text)}
+.gateway small{font-size:11px;color:var(--muted)}
+.gateway-enter{font-size:10px;letter-spacing:1px;color:var(--violet);margin-top:auto}
+.art-gateway .gateway-icon,.art-gateway .gateway-enter{color:#65e6b2}
+body.music-mode,body.art-mode{background:var(--bg);min-height:100vh}
+body.music-mode .side,body.art-mode .side{display:none}
+body.music-mode .shell,body.art-mode .shell{display:block;min-height:100vh}
+body.music-mode .main,body.art-mode .main{max-width:1120px;padding:24px clamp(16px,4vw,54px) 60px}
+body.music-mode .top,body.art-mode .top{justify-content:flex-start;margin-bottom:24px}
+body.music-mode .top-right,body.art-mode .top-right{display:none!important}
+body.music-mode .eyebrow,body.music-mode .hero .tag{color:#d2b5ff}
+body.music-mode{--bg:#10091d;--panel:#211333;--panel2:#2a1940;--line:#563a78;--cyan:#d2b5ff;--blue:#9c6cff;--violet:#c18aff;--text:#f4eaff;--muted:#b8a2ce;--green:#a7e7cf}
+body.music-mode .hero{background:radial-gradient(ellipse at 85% 15%,#7543a455,transparent 48%),linear-gradient(120deg,#321c4c,#1b102b 70%,#26143c);border-color:#8056a8}
+body.music-mode .hero:after{border-color:#d2b5ff33;box-shadow:0 0 0 22px #d2b5ff0a,0 0 0 45px #d2b5ff08}
+body.music-mode .card{background:linear-gradient(145deg,#241535,#170f24);border-color:#4b3267}
+body.music-mode .btn{background:linear-gradient(100deg,#7040a2,#9a5bc4);border-color:#bd8be5}
+body.music-mode .btn.secondary{background:#2b1a3d;border-color:#62427f;color:#ead8ff}
+body.music-mode input,body.music-mode textarea,body.music-mode select{background:#140d20;border-color:#60447c;color:var(--text)}
+body.music-mode .pill{color:#e0c4ff;border-color:#76529a;background:#2b1a3d}
+body.music-mode .pill.green{color:#b9f0d9;border-color:#477d68;background:#17382e}
+body.art-mode{--bg:#071710;--panel:#10271c;--panel2:#183526;--line:#315b43;--cyan:#8de8b2;--blue:#4cb77d;--violet:#91e3ae;--text:#e8fff0;--muted:#9bbda7;--green:#8de8b2}
+body.art-mode .eyebrow,body.art-mode .hero .tag{color:#9cf0bd}
+body.art-mode .hero{background:radial-gradient(ellipse at 85% 15%,#32885a55,transparent 48%),linear-gradient(120deg,#143b29,#0b2117 70%,#123323);border-color:#43835d}
+body.art-mode .hero:after{border-color:#9cf0bd33;box-shadow:0 0 0 22px #9cf0bd0a,0 0 0 45px #9cf0bd08}
+body.art-mode .card{background:linear-gradient(145deg,#142d20,#0d1f16);border-color:#315b43}
+body.art-mode .btn{background:linear-gradient(100deg,#26754b,#379b63);border-color:#6bc58d}
+body.art-mode .btn.secondary{background:#173425;border-color:#477a59;color:#d5ffe1}
+body.art-mode input,body.art-mode textarea,body.art-mode select{background:#0a1d13;border-color:#3d704e;color:var(--text)}
+body.art-mode .pill{color:#b8f5ca;border-color:#397b53;background:#153522}
+@media(max-width:900px){body.music-mode .main,body.art-mode .main{padding:16px 14px 40px}}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -32,8 +70,6 @@ button,a,.btn{touch-action:manipulation}
  <nav class="nav" id="nav">
   <button class="active" data-view="home"><span>⌂</span>ダッシュボード</button>
   <button data-view="academy"><span>⌘</span>宇宙学習室</button>
-  <button data-view="music"><span>♫</span>音楽制作室</button>
-  <button data-view="art"><span>✧</span>イラスト教室</button>
   <button data-view="learning"><span>▤</span>学習記録</button>
   <button data-view="calendar"><span>▦</span>週間カレンダー</button>
   <button data-view="notes"><span>✎</span>研究ノート</button>
@@ -47,9 +83,10 @@ button,a,.btn{touch-action:manipulation}
  <div class="sidefoot">SYSTEM VERSION 2.2<br>RESPONSIVE UI<br>SUPABASE CLOUD SYNC<br>MISSION: UNDERSTAND THE UNIVERSE</div>
 </aside>
 <main class="main">
- <header class="top"><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div><div class="row"><div class="status" id="cloudStatus"><i class="dot"></i> LOCAL MODE</div><button class="btn secondary small" onclick="showView('settings')">アカウント</button></div></header>
+ <header class="top"><div class="row top-left"><button id="studioBack" class="btn secondary small" style="display:none" onclick="showView('home')">← UNIVERSE COMMAND</button><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div></div><div class="row top-right"><div class="status" id="cloudStatus"><i class="dot"></i> LOCAL MODE</div><button class="btn secondary small" onclick="showView('settings')">アカウント</button></div></header>
  <section class="view active" id="home">
-  <div class="hero"><div class="tag">MISSION STATUS : ACTIVE / BEYOND THE UNKNOWN</div><h2>未知の、その先へ。</h2><p>まだ誰も知らないことを知りたい。理解できないものを理解したい。そして、まだ誰も見つけていない答えに、自分の手でたどり着きたい。</p><div class="row"><button class="btn" onclick="showView('academy')">学習を始める</button><button class="btn secondary" onclick="showView('notes')">研究ノートを開く</button></div></div>
+  <div class="hero"><div class="tag">MISSION STATUS : ACTIVE / BEYOND THE UNKNOWN</div><h2>未知の、その先へ。</h2><p>まだ誰も知らないことを知りたい。理解できないものを理解したい。そして、まだ誰も見つけていない答えに、自分の手でたどり着きたい。</p><div class="row"><button class="btn" onclick="showView('academy')">宇宙を学ぶ</button><button class="btn secondary" onclick="showView('notes')">研究ノート</button></div></div>
+  <div class="grid two" style="margin-top:14px"><button class="card gateway music-gateway" onclick="showView('music')"><span class="gateway-icon">♫</span><span class="gateway-kicker">MUSIC PRODUCTION</span><strong>MUSIC STUDIO</strong><small>音楽理論・FL Studio・作曲</small><span class="gateway-enter">ENTER STUDIO →</span></button><button class="card gateway art-gateway" onclick="showView('art')"><span class="gateway-icon">✧</span><span class="gateway-kicker">ILLUSTRATION</span><strong>ILLUSTRATION STUDIO</strong><small>人体・構図・色彩・作品制作</small><span class="gateway-enter">ENTER STUDIO →</span></button></div>
   <div class="card manifesto" style="margin-top:14px">
    <div class="tag">THE REASON WE EXPLORE</div>
    <h2>THE SEARCH FOR TRUTH BEGINS HERE.</h2>
@@ -219,7 +256,7 @@ function toast(s){let t=document.getElementById('toast');t.textContent=s;t.style
 function openModal(id){let m=document.getElementById(id);m.classList.add('open');let f=m.querySelector('form');if(f&&!f.elements.date?.value&&f.elements.date)f.elements.date.value=today()}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function formObj(f){return Object.fromEntries(new FormData(f).entries())}
-function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'音楽制作室',art:'イラスト教室',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];renderAll();window.scrollTo(0,0)}
+function showView(v){document.body.classList.toggle('music-mode',v==='music');document.body.classList.toggle('art-mode',v==='art');document.getElementById('studioBack').style.display=(v==='music'||v==='art')?'inline-flex':'none';document.querySelector('.top-right').style.display=(v==='music'||v==='art')?'none':'flex';document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'MUSIC STUDIO',art:'ILLUSTRATION STUDIO',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];renderAll();window.scrollTo(0,0)}
 document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-view]');if(b)showView(b.dataset.view)});
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
 let editingStudyId=null;
