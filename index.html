@@ -95,6 +95,29 @@ body.music-mode .area-switch-wrap,body.art-mode .area-switch-wrap{min-width:160p
 }
 @media(max-width:520px){.area-switch-wrap{min-width:130px}.area-switch-wrap select{min-width:130px}}
 
+
+/* Strong explicit theme overrides for the selected learning area */
+body.music-mode{background:#10091d!important;color:#f4eaff!important}
+body.art-mode{background:#071710!important;color:#e8fff0!important}
+body.music-mode .shell,body.art-mode .shell{display:grid!important;grid-template-columns:230px minmax(0,1fr)!important;background:transparent!important}
+body.music-mode .side{display:block!important;background:#160d23!important;border-right:1px solid #563a78!important}
+body.art-mode .side{display:block!important;background:#0a1d13!important;border-right:1px solid #315b43!important}
+body.music-mode .main,body.art-mode .main{background:transparent!important;color:var(--text)!important;max-width:none!important;width:100%!important}
+body.music-mode .card{background:#21142f!important;border-color:#563a78!important;color:#f4eaff!important}
+body.art-mode .card{background:#10271c!important;border-color:#315b43!important;color:#e8fff0!important}
+body.music-mode .hero{background:linear-gradient(120deg,#321c4c,#1b102b 70%,#26143c)!important;border-color:#8056a8!important}
+body.art-mode .hero{background:linear-gradient(120deg,#143b29,#0b2117 70%,#123323)!important;border-color:#43835d!important}
+body.music-mode .nav button{color:#d8c4ec!important}
+body.art-mode .nav button{color:#c6e8d0!important}
+body.music-mode .nav button.active,body.music-mode .nav button:hover{background:#321e49!important;border-color:#8056a8!important;color:#f4eaff!important}
+body.art-mode .nav button.active,body.art-mode .nav button:hover{background:#173b28!important;border-color:#43835d!important;color:#e8fff0!important}
+body.music-mode .area-switch-wrap select{background:#1b1029!important;border-color:#8056a8!important;color:#f4eaff!important}
+body.art-mode .area-switch-wrap select{background:#0b2117!important;border-color:#43835d!important;color:#e8fff0!important}
+@media(max-width:900px){
+ body.music-mode .shell,body.art-mode .shell{display:block!important}
+ body.music-mode .side,body.art-mode .side{position:relative!important;height:auto!important;border-right:0!important;border-bottom:1px solid var(--line)!important}
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
