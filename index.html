@@ -21,114 +21,17 @@ button,a,.btn{touch-action:manipulation}
 @media(max-width:520px){.nav{padding-bottom:4px;scrollbar-width:thin}.nav button{font-size:11px;padding:10px 11px}.top{gap:8px}.top h1{font-size:21px}.status{padding:7px 9px}.manifesto{border-radius:13px}.manifesto h2{line-height:1.35}.hero p{font-size:12px}}
 @media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:relative;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:4px 8px 10px}.nav{display:flex;overflow:auto;gap:4px}.navlabel,.sidefoot{display:none}.nav button{white-space:nowrap;width:auto;margin:0;padding:9px}.nav button span{width:auto;margin-right:5px}.main{padding:18px 14px 40px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.top{align-items:flex-start}.status{font-size:9px}.calendar{gap:3px}.day{padding:5px;min-height:95px}.dayhead{font-size:9px}.event{font-size:8px;padding:4px}}
 @media(max-width:520px){.hero{padding:19px;min-height:170px}.hero h2{font-size:20px}.statval{font-size:23px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.table{font-size:9px}.table th,.table td{padding:8px 4px}}
-
-/* Independent creative studio modes */
-.top-left{align-items:center}
-.gateway{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:9px;min-height:190px;cursor:pointer;transition:transform .18s,border-color .18s}
-.gateway:hover{transform:translateY(-3px);border-color:var(--violet)}
-.gateway-icon{font-size:30px;color:var(--violet)}
-.gateway-kicker{font-size:9px;letter-spacing:2px;color:var(--muted)}
-.gateway strong{font-size:20px;letter-spacing:1.5px;color:var(--text)}
-.gateway small{font-size:11px;color:var(--muted)}
-.gateway-enter{font-size:10px;letter-spacing:1px;color:var(--violet);margin-top:auto}
-.art-gateway .gateway-icon,.art-gateway .gateway-enter{color:#65e6b2}
-body.music-mode,body.art-mode{background:var(--bg);min-height:100vh}
-body.music-mode .side,body.art-mode .side{display:none}
-body.music-mode .shell,body.art-mode .shell{display:block;min-height:100vh}
-body.music-mode .main,body.art-mode .main{max-width:1120px;padding:24px clamp(16px,4vw,54px) 60px}
-body.music-mode .top,body.art-mode .top{justify-content:flex-start;margin-bottom:24px}
-body.music-mode .top-right,body.art-mode .top-right{display:none!important}
-body.music-mode .eyebrow,body.music-mode .hero .tag{color:#d2b5ff}
-body.music-mode{--bg:#10091d;--panel:#211333;--panel2:#2a1940;--line:#563a78;--cyan:#d2b5ff;--blue:#9c6cff;--violet:#c18aff;--text:#f4eaff;--muted:#b8a2ce;--green:#a7e7cf}
-body.music-mode .hero{background:radial-gradient(ellipse at 85% 15%,#7543a455,transparent 48%),linear-gradient(120deg,#321c4c,#1b102b 70%,#26143c);border-color:#8056a8}
-body.music-mode .hero:after{border-color:#d2b5ff33;box-shadow:0 0 0 22px #d2b5ff0a,0 0 0 45px #d2b5ff08}
-body.music-mode .card{background:linear-gradient(145deg,#241535,#170f24);border-color:#4b3267}
-body.music-mode .btn{background:linear-gradient(100deg,#7040a2,#9a5bc4);border-color:#bd8be5}
-body.music-mode .btn.secondary{background:#2b1a3d;border-color:#62427f;color:#ead8ff}
-body.music-mode input,body.music-mode textarea,body.music-mode select{background:#140d20;border-color:#60447c;color:var(--text)}
-body.music-mode .pill{color:#e0c4ff;border-color:#76529a;background:#2b1a3d}
-body.music-mode .pill.green{color:#b9f0d9;border-color:#477d68;background:#17382e}
-body.art-mode{--bg:#071710;--panel:#10271c;--panel2:#183526;--line:#315b43;--cyan:#8de8b2;--blue:#4cb77d;--violet:#91e3ae;--text:#e8fff0;--muted:#9bbda7;--green:#8de8b2}
-body.art-mode .eyebrow,body.art-mode .hero .tag{color:#9cf0bd}
-body.art-mode .hero{background:radial-gradient(ellipse at 85% 15%,#32885a55,transparent 48%),linear-gradient(120deg,#143b29,#0b2117 70%,#123323);border-color:#43835d}
-body.art-mode .hero:after{border-color:#9cf0bd33;box-shadow:0 0 0 22px #9cf0bd0a,0 0 0 45px #9cf0bd08}
-body.art-mode .card{background:linear-gradient(145deg,#142d20,#0d1f16);border-color:#315b43}
-body.art-mode .btn{background:linear-gradient(100deg,#26754b,#379b63);border-color:#6bc58d}
-body.art-mode .btn.secondary{background:#173425;border-color:#477a59;color:#d5ffe1}
-body.art-mode input,body.art-mode textarea,body.art-mode select{background:#0a1d13;border-color:#3d704e;color:var(--text)}
-body.art-mode .pill{color:#b8f5ca;border-color:#397b53;background:#153522}
-@media(max-width:900px){body.music-mode .main,body.art-mode .main{padding:16px 14px 40px}}
-
-
-/* Studio navigation and global learning-area switch */
-.area-switch-wrap{display:flex;flex-direction:column;gap:5px;min-width:145px}
-.area-switch-wrap span{font-size:9px;letter-spacing:1.6px;color:var(--muted)}
-.area-switch-wrap select{padding:8px 30px 8px 10px;font-size:11px;min-width:145px}
-body.music-mode .area-switch-wrap select{background:#1b1029;border-color:#8056a8;color:#f4eaff}
-body.art-mode .area-switch-wrap select{background:#0b2117;border-color:#43835d;color:#e8fff0}
-body.music-mode .shell,body.art-mode .shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
-body.music-mode .side,body.art-mode .side{display:block;position:sticky;top:0;height:100vh;padding:22px 14px;border-right:1px solid var(--line);border-bottom:0;background:#160d23}
-body.art-mode .side{background:#0a1d13}
-body.music-mode .brand,body.art-mode .brand{padding:4px 6px 24px}
-body.music-mode .nav,body.art-mode .nav{display:block;overflow:visible;padding:0}
-body.music-mode .navlabel,body.art-mode .navlabel{display:block;color:var(--muted)}
-body.music-mode .nav button,body.art-mode .nav button{display:block;width:100%;white-space:normal;text-align:left;margin:3px 0;padding:11px 12px;color:var(--text);border-color:transparent;background:transparent}
-body.music-mode .nav button:hover,body.music-mode .nav button.active{background:#321e49;border-color:#8056a8;color:#e5caff}
-body.art-mode .nav button:hover,body.art-mode .nav button.active{background:#173b28;border-color:#43835d;color:#baf5cd}
-body.music-mode .nav button span,body.art-mode .nav button span{display:inline-block;width:25px;margin:0}
-body.music-mode .sidefoot,body.art-mode .sidefoot{display:block;color:var(--muted);border-color:var(--line)}
-body.music-mode .main,body.art-mode .main{max-width:none;width:100%;padding:24px clamp(16px,3vw,42px) 60px}
-body.music-mode .top,body.art-mode .top{justify-content:space-between;align-items:center}
-body.music-mode .top-right,body.art-mode .top-right{display:none!important}
-body.music-mode .top-left,body.art-mode .top-left{gap:18px}
-body.music-mode .area-switch-wrap,body.art-mode .area-switch-wrap{min-width:160px}
-@media(max-width:900px){
- body.music-mode .shell,body.art-mode .shell{grid-template-columns:1fr}
- body.music-mode .side,body.art-mode .side{position:relative;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
- body.music-mode .brand,body.art-mode .brand{padding:4px 8px 10px}
- body.music-mode .nav,body.art-mode .nav{display:flex;overflow-x:auto;gap:4px}
- body.music-mode .navlabel,body.art-mode .navlabel,body.music-mode .sidefoot,body.art-mode .sidefoot{display:none}
- body.music-mode .nav button,body.art-mode .nav button{display:block;width:auto;white-space:nowrap;padding:9px 11px}
- body.music-mode .nav button span,body.art-mode .nav button span{width:auto;margin-right:5px}
- body.music-mode .main,body.art-mode .main{padding:16px 14px 40px}
- body.music-mode .top,body.art-mode .top{align-items:flex-start;flex-wrap:wrap}
-}
-@media(max-width:520px){.area-switch-wrap{min-width:130px}.area-switch-wrap select{min-width:130px}}
-
-
-/* Strong explicit theme overrides for the selected learning area */
-body.music-mode{background:#10091d!important;color:#f4eaff!important}
-body.art-mode{background:#071710!important;color:#e8fff0!important}
-body.music-mode .shell,body.art-mode .shell{display:grid!important;grid-template-columns:230px minmax(0,1fr)!important;background:transparent!important}
-body.music-mode .side{display:block!important;background:#160d23!important;border-right:1px solid #563a78!important}
-body.art-mode .side{display:block!important;background:#0a1d13!important;border-right:1px solid #315b43!important}
-body.music-mode .main,body.art-mode .main{background:transparent!important;color:var(--text)!important;max-width:none!important;width:100%!important}
-body.music-mode .card{background:#21142f!important;border-color:#563a78!important;color:#f4eaff!important}
-body.art-mode .card{background:#10271c!important;border-color:#315b43!important;color:#e8fff0!important}
-body.music-mode .hero{background:linear-gradient(120deg,#321c4c,#1b102b 70%,#26143c)!important;border-color:#8056a8!important}
-body.art-mode .hero{background:linear-gradient(120deg,#143b29,#0b2117 70%,#123323)!important;border-color:#43835d!important}
-body.music-mode .nav button{color:#d8c4ec!important}
-body.art-mode .nav button{color:#c6e8d0!important}
-body.music-mode .nav button.active,body.music-mode .nav button:hover{background:#321e49!important;border-color:#8056a8!important;color:#f4eaff!important}
-body.art-mode .nav button.active,body.art-mode .nav button:hover{background:#173b28!important;border-color:#43835d!important;color:#e8fff0!important}
-body.music-mode .area-switch-wrap select{background:#1b1029!important;border-color:#8056a8!important;color:#f4eaff!important}
-body.art-mode .area-switch-wrap select{background:#0b2117!important;border-color:#43835d!important;color:#e8fff0!important}
-@media(max-width:900px){
- body.music-mode .shell,body.art-mode .shell{display:block!important}
- body.music-mode .side,body.art-mode .side{position:relative!important;height:auto!important;border-right:0!important;border-bottom:1px solid var(--line)!important}
-}
-
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="shell">
 <aside class="side">
- <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL LEARNING OS · V3.0</small></div></div>
+ <div class="brand"><div class="logo">✦</div><div><b>UNIVERSE COMMAND</b><small>PERSONAL RESEARCH OS · V2.4</small></div></div>
  <div class="navlabel">MISSION CONTROL</div>
  <nav class="nav" id="nav">
   <button class="active" data-view="home"><span>⌂</span>ダッシュボード</button>
-  <button data-view="academy"><span>⌘</span>宇宙学習室</button>
+  <button data-view="academy"><span>⌘</span>学習室</button>
   <button data-view="learning"><span>▤</span>学習記録</button>
   <button data-view="calendar"><span>▦</span>週間カレンダー</button>
   <button data-view="notes"><span>✎</span>研究ノート</button>
@@ -142,10 +45,9 @@ body.art-mode .area-switch-wrap select{background:#0b2117!important;border-color
  <div class="sidefoot">SYSTEM VERSION 2.2<br>RESPONSIVE UI<br>SUPABASE CLOUD SYNC<br>MISSION: UNDERSTAND THE UNIVERSE</div>
 </aside>
 <main class="main">
- <header class="top"><div class="row top-left"><label class="area-switch-wrap"><span>LEARNING AREA</span><select id="areaSwitch" aria-label="学習分野を切り替え" onchange="showView(this.value)"><option value="academy">宇宙物理学</option><option value="music">音楽制作</option><option value="art">イラスト</option></select></label><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div></div><div class="row top-right"><div class="status" id="cloudStatus"><i class="dot"></i> LOCAL MODE</div><button class="btn secondary small" onclick="showView('settings')">アカウント</button></div></header>
+ <header class="top"><div><div class="eyebrow">DEEP SPACE RESEARCH DIVISION / EARTH</div><h1 id="pageTitle">ダッシュボード</h1></div><div class="row"><div class="status" id="cloudStatus"><i class="dot"></i> LOCAL MODE</div><button class="btn secondary small" onclick="showView('settings')">アカウント</button></div></header>
  <section class="view active" id="home">
-  <div class="hero"><div class="tag">MISSION STATUS : ACTIVE / BEYOND THE UNKNOWN</div><h2>未知の、その先へ。</h2><p>まだ誰も知らないことを知りたい。理解できないものを理解したい。そして、まだ誰も見つけていない答えに、自分の手でたどり着きたい。</p><div class="row"><button class="btn" onclick="showView('academy')">宇宙を学ぶ</button><button class="btn secondary" onclick="showView('notes')">研究ノート</button></div></div>
-  <div class="grid two" style="margin-top:14px"><button class="card gateway music-gateway" onclick="showView('music')"><span class="gateway-icon">♫</span><span class="gateway-kicker">MUSIC PRODUCTION</span><strong>MUSIC STUDIO</strong><small>音楽理論・FL Studio・作曲</small><span class="gateway-enter">ENTER STUDIO →</span></button><button class="card gateway art-gateway" onclick="showView('art')"><span class="gateway-icon">✧</span><span class="gateway-kicker">ILLUSTRATION</span><strong>ILLUSTRATION STUDIO</strong><small>人体・構図・色彩・作品制作</small><span class="gateway-enter">ENTER STUDIO →</span></button></div>
+  <div class="hero"><div class="tag">MISSION STATUS : ACTIVE / BEYOND THE UNKNOWN</div><h2>未知の、その先へ。</h2><p>まだ誰も知らないことを知りたい。理解できないものを理解したい。そして、まだ誰も見つけていない答えに、自分の手でたどり着きたい。</p><div class="row"><button class="btn" onclick="showView('academy')">学習を始める</button><button class="btn secondary" onclick="showView('notes')">研究ノートを開く</button></div></div>
   <div class="card manifesto" style="margin-top:14px">
    <div class="tag">THE REASON WE EXPLORE</div>
    <h2>THE SEARCH FOR TRUTH BEGINS HERE.</h2>
@@ -174,46 +76,6 @@ body.art-mode .area-switch-wrap select{background:#0b2117!important;border-color
   <div class="card" style="margin-top:14px"><h3 style="font-size:13px">ChatGPT 研究チューター</h3><p class="muted" style="line-height:1.8">講義の疑問、数式の途中式、別の説明方法、追加問題などを質問できるよ。下のボタンで質問文をコピーしてChatGPTに送れる。</p><div class="field"><label>質問・分からないところ</label><textarea id="tutorQuestion" placeholder="例：光年と光行時間の違いを、具体例を使ってもう一度説明して。"></textarea></div><div class="actions"><button class="btn secondary" onclick="copyTutorPrompt()">質問文をコピー</button><button class="btn" onclick="openTutor()">ChatGPTを開く ↗</button></div></div>
   <div class="modal" id="lessonModal"><div class="modalbox"><div class="row" style="justify-content:space-between"><span class="pill">ACADEMY LESSON</span><button class="btn secondary small" onclick="closeModal('lessonModal')">閉じる</button></div><div id="lessonContent"></div><div class="actions"><button class="btn secondary" onclick="askLessonTutor()">この講義をChatGPTに質問</button><button class="btn" id="completeLessonBtn">講義を完了する · +20 XP</button></div></div></div>
  </section>
- 
- <section class="view" id="music">
-  <div class="hero" id="music-top"><div class="tag">MUSIC PRODUCTION / CREATIVE STUDIO</div><h2>音を組み立て、自分だけの世界を作る。</h2><p>音楽理論の動画学習とFL Studioでの実践を組み合わせ、ピアノ・シンセを中心にゲームやアニメのBGMを制作する。</p><div class="row"><span class="pill">FL Studio Fruity Edition</span><span class="pill green">理論＋実践</span></div></div>
-  <div class="sectionhead" id="music-curriculum"><div><h3>制作カリキュラム</h3><div class="muted">動画で学び、ここで復習し、FL Studioで音にする。</div></div><span class="pill">8 STAGES</span></div>
-  <div class="grid two">
-   <div class="card"><span class="pill green">STAGE 01 · 学習中</span><h3 style="font-size:14px">音楽の基礎</h3><p class="muted">音名・半音と全音・メジャー／マイナー・音程・リズム。おざしんミュージックの動画を順番に視聴。</p><p class="muted"><b>学習済み：</b>半音・全音、メジャー・マイナー</p></div>
-   <div class="card"><span class="pill">STAGE 02</span><h3 style="font-size:14px">メロディ制作</h3><p class="muted">旋律・フレーズ・反復・展開。短いピアノメロディを作る。</p></div>
-   <div class="card"><span class="pill">STAGE 03</span><h3 style="font-size:14px">コード・和声</h3><p class="muted">三和音・四和音・コード進行・転回形。メロディに和音をつける。</p></div>
-   <div class="card"><span class="pill">STAGE 04</span><h3 style="font-size:14px">伴奏・リズム・ベース</h3><p class="muted">ピアノ伴奏・アルペジオ・ベース・ドラム。短い曲を完成させる。</p></div>
-   <div class="card"><span class="pill">STAGE 05</span><h3 style="font-size:14px">シンセサイザー・音作り</h3><p class="muted">波形・ADSR・フィルター・LFO・エフェクト。自分の音色を作る。</p></div>
-   <div class="card"><span class="pill">STAGE 06</span><h3 style="font-size:14px">編曲・オーケストレーション</h3><p class="muted">音域・楽器の役割・パッド・ストリングス・展開を学ぶ。</p></div>
-   <div class="card"><span class="pill">STAGE 07</span><h3 style="font-size:14px">ゲーム・戦闘BGM</h3><p class="muted">緊張感・疾走感・盛り上がり・シーンに合わせた構成を作る。</p></div>
-   <div class="card"><span class="pill">STAGE 08</span><h3 style="font-size:14px">ミックス・公開</h3><p class="muted">音量・EQ・空間表現・書き出し・YouTube投稿を学ぶ。</p></div>
-  </div>
-  <div class="grid two" id="music-practice" style="margin-top:14px">
-   <div class="card"><h3 style="font-size:13px">学習セッションを記録</h3><form id="musicSessionForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>学習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field full"><label>学習内容・動画タイトル</label><input name="title" required placeholder="例：ダイアトニックコードの仕組み"></div><div class="field full"><label>理解したこと・FL Studioで試したこと</label><textarea name="memo" placeholder="分かったこと、まだ曖昧なこと、作った音など"></textarea></div><div class="field full actions"><button class="btn">学習を保存</button></div></form></div>
-   <div class="card"><h3 style="font-size:13px">音楽ノートを追加</h3><form id="musicNoteForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>種類</label><select name="kind"><option>理論メモ</option><option>作曲アイデア</option><option>音色・設定</option><option>作品メモ</option><option>次回の課題</option></select></div><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：切ないピアノ曲のコード案"></div><div class="field full"><label>ノート</label><textarea name="body" required placeholder="学んだこと・アイデア・次に試すこと"></textarea></div><div class="field full actions"><button class="btn">ノートを保存</button></div></form></div>
-  </div>
-  <div class="grid two" id="music-history" style="margin-top:14px"><div class="card"><div class="sectionhead" style="margin-top:0"><h3>学習履歴</h3><span class="pill" id="musicSessionCount">0件</span></div><div id="musicSessionsList" class="muted">まだ記録はありません。</div></div><div class="card"><div class="sectionhead" style="margin-top:0"><h3>音楽ノート</h3><span class="pill" id="musicNoteCount">0件</span></div><div id="musicNotesList" class="muted">まだノートはありません。</div></div></div>
- </section>
- <section class="view" id="art">
-  <div class="hero" id="art-top"><div class="tag">ILLUSTRATION / VISUAL ARTS STUDIO</div><h2>頭の中の景色を、一枚の絵に。</h2><p>観察・人体・構図・光と色を段階的に学び、納得できる作品を自分の力で描けるようになる。</p><div class="row"><span class="pill">基礎練習＋作品制作</span><span class="pill green">添削・振り返り</span></div></div>
-  <div class="sectionhead" id="art-curriculum"><div><h3>イラストカリキュラム</h3><div class="muted">練習した内容と作品の改善点を記録する。</div></div><span class="pill">8 STAGES</span></div>
-  <div class="grid two">
-   <div class="card"><span class="pill green">STAGE 01 · 基礎</span><h3 style="font-size:14px">線・形・立体・観察</h3><p class="muted">形を単純化して捉える。線の強弱、箱・球・円柱、観察練習。</p></div>
-   <div class="card"><span class="pill">STAGE 02</span><h3 style="font-size:14px">顔・人体構造</h3><p class="muted">頭部の立体、顔の角度、骨格、筋肉、手や身体の構造。</p></div>
-   <div class="card"><span class="pill">STAGE 03</span><h3 style="font-size:14px">パース・構図</h3><p class="muted">奥行き、視線誘導、画面設計、キャラクターと背景の配置。</p></div>
-   <div class="card"><span class="pill">STAGE 04</span><h3 style="font-size:14px">光・影・色彩</h3><p class="muted">光源、陰影、色相・明度・彩度、空気感と質感。</p></div>
-   <div class="card"><span class="pill">STAGE 05</span><h3 style="font-size:14px">キャラクター表現</h3><p class="muted">表情、ポーズ、衣服、髪、キャラクターらしさ。</p></div>
-   <div class="card"><span class="pill">STAGE 06</span><h3 style="font-size:14px">背景・空間演出</h3><p class="muted">背景美術、環境光、奥行き、時間帯や雰囲気の表現。</p></div>
-   <div class="card"><span class="pill">STAGE 07</span><h3 style="font-size:14px">一枚絵の完成</h3><p class="muted">ラフから線画・塗り・仕上げまで、作品を完成させる。</p></div>
-   <div class="card"><span class="pill">STAGE 08</span><h3 style="font-size:14px">作品公開・発展</h3><p class="muted">ポートフォリオ、SNS投稿、依頼・グッズなどの可能性を学ぶ。</p></div>
-  </div>
-  <div class="grid two" id="art-practice" style="margin-top:14px">
-   <div class="card"><h3 style="font-size:13px">練習・制作を記録</h3><form id="artSessionForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>練習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field full"><label>練習内容・作品名</label><input name="title" required placeholder="例：顔の角度・煽り構図の練習"></div><div class="field full"><label>できたこと・改善点</label><textarea name="memo" placeholder="良かった点、直したい点、次に試すこと"></textarea></div><div class="field full actions"><button class="btn">記録を保存</button></div></form></div>
-   <div class="card"><h3 style="font-size:13px">イラストノートを追加</h3><form id="artNoteForm" class="formgrid"><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field"><label>種類</label><select name="kind"><option>技法メモ</option><option>構図アイデア</option><option>色・光の研究</option><option>作品の振り返り</option><option>次回の課題</option></select></div><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：夜の自販機の光の表現"></div><div class="field full"><label>ノート</label><textarea name="body" required placeholder="気づいたこと・参考にした表現・次に試すこと"></textarea></div><div class="field full actions"><button class="btn">ノートを保存</button></div></form></div>
-  </div>
-  <div class="grid two" id="art-history" style="margin-top:14px"><div class="card"><div class="sectionhead" style="margin-top:0"><h3>練習履歴</h3><span class="pill" id="artSessionCount">0件</span></div><div id="artSessionsList" class="muted">まだ記録はありません。</div></div><div class="card"><div class="sectionhead" style="margin-top:0"><h3>イラストノート</h3><span class="pill" id="artNoteCount">0件</span></div><div id="artNotesList" class="muted">まだノートはありません。</div></div></div>
- </section>
-
  <section class="view" id="news">
   <div class="sectionhead"><div><h3>宇宙ニュースセンター</h3><div class="muted">公式機関の最新情報を確認し、気になった記事を発見記録へ。</div></div><span class="pill">OFFICIAL SOURCES</span></div>
   <div class="syncbox" style="margin-bottom:14px"><strong>情報の扱い：</strong>ここから公式サイトへ移動できるよ。現在の試作版はニュース見出しを自動取得していないため、記事の内容・日付はリンク先で確認してね。</div>
@@ -272,7 +134,7 @@ body.art-mode .area-switch-wrap select{background:#0b2117!important;border-color
   <div class="card" style="margin-bottom:14px"><h3 style="font-size:13px">データ保存・バックアップ</h3><div class="syncbox"><strong id="storageMode">LOCAL STORAGE + CLOUD BACKUP</strong><br>ログイン前のデータはこの端末に保存されます。初回ログイン時は端末内の記録とクラウド上の記録をIDで統合します。念のため、同期前にJSONバックアップを作成してね。</div><div class="row" style="margin-top:12px"><button class="btn" onclick="exportData()">データをバックアップ（JSON）</button><label class="btn secondary" for="importFile">バックアップを復元</label><input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importData(event)"></div></div>
   <div class="card"><h3 style="font-size:13px">データの初期化</h3><p class="muted">すべての学習記録・ノート・テーマ・成績・予定を削除します。実行前にバックアップしてください。</p><button class="btn danger" onclick="resetData()">全データを削除</button></div>
  </section>
- <footer class="muted" style="text-align:center;padding:28px 0 8px">UNIVERSE COMMAND · LEARN · CREATE · DISCOVER</footer>
+ <footer class="muted" style="text-align:center;padding:28px 0 8px">UNIVERSE COMMAND · KEEP QUESTIONING THE COSMOS</footer>
 </main></div>
 <div class="modal" id="studyModal"><div class="modalbox"><h3>学習セッションを記録</h3><form id="studyForm" class="formgrid"><div class="field"><label>学習日</label><input type="date" name="date" required></div><div class="field"><label>学習時間（分）</label><input type="number" name="minutes" min="1" max="600" value="30" required></div><div class="field"><label>学習カテゴリ</label><select name="category"><option>講義</option><option>数学・物理演習</option><option>復習</option><option>研究・調査</option><option>論文読解</option></select></div><div class="field"><label>獲得XP</label><input type="number" name="xp" min="0" value="20"></div><div class="field full"><label>学習内容</label><input name="title" placeholder="例：光速と光年について学習" required></div><div class="field full"><label>理解したこと・メモ</label><textarea name="memo" placeholder="今日分かったこと、疑問など"></textarea></div><div class="field full actions"><button type="button" class="btn secondary" onclick="closeModal('studyModal')">キャンセル</button><button class="btn">保存する</button></div></form></div></div>
 <div class="modal" id="noteModal"><div class="modalbox"><h3>研究ノート</h3><form id="noteForm" class="formgrid"><input type="hidden" name="id"><div class="field full"><label>タイトル</label><input name="title" required placeholder="例：ダークマターの正体について"></div><div class="field"><label>分類</label><select name="type"><option>疑問</option><option>仮説</option><option>検証</option><option>考察</option><option>学習メモ</option></select></div><div class="field"><label>日付</label><input type="date" name="date" required></div><div class="field full"><label>内容</label><textarea name="body" required placeholder="疑問・根拠・考えたことを記録"></textarea></div><div class="field full actions"><button type="button" class="btn secondary" onclick="closeModal('noteModal')">キャンセル</button><button class="btn">保存する</button></div></form></div></div>
@@ -290,7 +152,7 @@ const supabaseClient = window.supabase?.createClient
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
 let data=load(),weekOffset=0,currentUser=null,cloudTimer=null,applyingRemote=false;
-function fresh(){return {studies:[],notes:[],themes:[],events:[],tests:[],discoveries:[],musicSessions:[],musicNotes:[],artSessions:[],artNotes:[]}}
+function fresh(){return {studies:[],notes:[],themes:[],events:[],tests:[],discoveries:[]}}
 function load(){try{return {...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return fresh()}}
 function lessonDone(){try{return JSON.parse(localStorage.getItem(LESSON_KEY)||'[]')}catch(e){return []}}
 function persistLocal(){localStorage.setItem(KEY,JSON.stringify(data))}
@@ -315,41 +177,8 @@ function toast(s){let t=document.getElementById('toast');t.textContent=s;t.style
 function openModal(id){let m=document.getElementById(id);m.classList.add('open');let f=m.querySelector('form');if(f&&!f.elements.date?.value&&f.elements.date)f.elements.date.value=today()}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function formObj(f){return Object.fromEntries(new FormData(f).entries())}
-const universeNavHTML=document.getElementById('nav').innerHTML;
-const studioMenus={
- music:[['♫','スタジオ概要','music-top'],['⌘','制作カリキュラム','music-curriculum'],['✎','学習・制作記録','music-practice'],['▤','学習履歴・ノート','music-history']],
- art:[['✧','スタジオ概要','art-top'],['⌘','描画カリキュラム','art-curriculum'],['✎','練習・制作記録','art-practice'],['▤','練習履歴・ノート','art-history']]
-};
-function setStudioNav(v){
- const nav=document.getElementById('nav');
- if(studioMenus[v]){
-  nav.innerHTML=studioMenus[v].map((x,i)=>'<button type="button" data-anchor="'+x[2]+'" class="'+(i===0?'active':'')+'"><span>'+x[0]+'</span>'+x[1]+'</button>').join('');
-  document.querySelector('.navlabel').textContent=v==='music'?'MUSIC STUDIO':'ILLUSTRATION STUDIO';
- }else{
-  nav.innerHTML=universeNavHTML;
-  document.querySelector('.navlabel').textContent='MISSION CONTROL';
- }
-}
-function showView(v){
- document.body.classList.toggle('music-mode',v==='music');
- document.body.classList.toggle('art-mode',v==='art');
- document.getElementById('studioBack').style.display=(v==='music'||v==='art')?'inline-flex':'none';
- document.querySelector('.top-right').style.display=(v==='music'||v==='art')?'none':'flex';
- setStudioNav(v);
- document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));
- document.querySelectorAll('.nav button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));
- const switcher=document.getElementById('areaSwitch');
- if(switcher){switcher.value=['music','art'].includes(v)?v:'academy';switcher.style.display=''}
- document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'MUSIC STUDIO',art:'ILLUSTRATION STUDIO',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];
- renderAll();window.scrollTo(0,0);
-}
-/* Navigation handler on the document so it survives sidebar menu rebuilds */
-document.addEventListener('click',e=>{
- let b=e.target.closest('#nav button[data-view]');
- if(b){e.preventDefault();showView(b.dataset.view);return}
- let a=e.target.closest('#nav button[data-anchor]');
- if(a){e.preventDefault();document.getElementById(a.dataset.anchor)?.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('#nav button[data-anchor]').forEach(x=>x.classList.toggle('active',x===a))}
-},true);
+function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'学習室',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];renderAll();window.scrollTo(0,0)}
+document.getElementById('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-view]');if(b)showView(b.dataset.view)});
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
 let editingStudyId=null;
 function editStudy(id){let x=data.studies.find(v=>String(v.id)===String(id));if(!x){toast('編集する学習記録が見つかりません');return}editingStudyId=x.id;let f=document.getElementById('studyForm');for(let k of ['date','minutes','category','xp','title','memo']){if(f.elements[k])f.elements[k].value=x[k]??''}document.querySelector('#studyModal h3').textContent='学習記録を編集';let submit=f.querySelector('button[type=submit],button:not([type])');if(submit)submit.textContent='変更を保存';openModal('studyModal')}
@@ -359,15 +188,6 @@ document.getElementById('themeForm').addEventListener('submit',e=>{e.preventDefa
 document.getElementById('eventForm').addEventListener('submit',e=>{e.preventDefault();data.events.push({...formObj(e.target),id:uid()});save();e.target.reset();closeModal('eventModal');toast('予定を追加しました')});
 document.getElementById('testForm').addEventListener('submit',e=>{e.preventDefault();data.tests.unshift({...formObj(e.target),id:uid(),score:+e.target.score.value});save();e.target.reset();closeModal('testModal');toast('試験結果を保存しました')});
 document.getElementById('discoveryForm').addEventListener('submit',e=>{e.preventDefault();data.discoveries.unshift({...formObj(e.target),id:uid()});save();e.target.reset();closeModal('discoveryModal');toast('記録しました')});
-function bindRoomForm(formId,key,note=false){let form=document.getElementById(formId);if(!form)return;form.addEventListener('submit',e=>{e.preventDefault();let item={...formObj(e.target),id:uid()};if(!note)item.minutes=+item.minutes;data[key].unshift(item);save();e.target.reset();toast('学習ノートを保存しました')})}
-bindRoomForm('musicSessionForm','musicSessions');
-bindRoomForm('musicNoteForm','musicNotes',true);
-bindRoomForm('artSessionForm','artSessions');
-bindRoomForm('artNoteForm','artNotes',true);
-function renderRoom(prefix){let sessions=data[prefix+'Sessions']||[],notes=data[prefix+'Notes']||[];let sc=document.getElementById(prefix+'SessionsList'),nc=document.getElementById(prefix+'NotesList');document.getElementById(prefix+'SessionCount').textContent=sessions.length+'件';document.getElementById(prefix+'NoteCount').textContent=notes.length+'件';sc.innerHTML=sessions.length?sessions.map(x=>'<div class="listitem"><b>'+esc(x.title)+'</b><p>'+fmt(x.date)+' · '+x.minutes+'分</p><p>'+esc(x.memo||'')+'</p></div>').join(''):'<div class="empty">まだ記録はありません。</div>';nc.innerHTML=notes.length?notes.map(x=>'<div class="listitem"><span class="pill">'+esc(x.kind)+'</span><b>'+esc(x.title)+'</b><p>'+fmt(x.date)+'</p><p style="white-space:pre-wrap">'+esc(x.body)+'</p></div>').join(''):'<div class="empty">まだノートはありません。</div>'}
-function renderMusicRoom(){renderRoom('music')}
-function renderArtRoom(){renderRoom('art')}
-
 function xpTotal(){return data.studies.reduce((a,x)=>a+(+x.xp||0),0)}
 function rankFor(x){let thresholds=[0,100,300,600,1000,1600,2400,3500];let names=['宇宙学習者','基礎科学修得者','物理学実践者','天文学探究者','宇宙物理研究候補','研究者への道','独立研究への挑戦','宇宙研究エキスパート'];let i=0;for(let j=0;j<thresholds.length;j++)if(x>=thresholds[j])i=j;let next=thresholds[Math.min(i+1,thresholds.length-1)]||thresholds[i]+1000;let base=thresholds[i];return {i,name:names[i],base,next,pct:i===7?100:Math.min(100,(x-base)/(next-base)*100)}}
 function renderHome(){let xp=xpTotal(),r=rankFor(xp);document.getElementById('level').textContent='LEVEL '+(r.i+1);document.getElementById('rank').textContent=r.name;document.getElementById('xp').textContent=xp+' XP';document.getElementById('levelbar').style.width=r.pct+'%';document.getElementById('sessions').textContent=data.studies.length;document.getElementById('noteCount').textContent=data.notes.length;let recent=[...data.studies].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);document.getElementById('recentLearning').innerHTML=recent.length?recent.map(x=>`<div class="listitem"><b>${esc(x.title)}</b><p>${fmt(x.date)} · ${esc(x.category)} · ${x.minutes}分 · +${x.xp} XP</p></div>`).join(''):'まだ学習記録はありません。';let th=data.themes.filter(x=>x.status!=='完了').slice(0,3);document.getElementById('homeThemes').innerHTML=th.length?th.map(x=>`<div class="mission"><div><b>${esc(x.title)}</b><small>${esc(x.field)}</small></div><span class="pill">${esc(x.status)}</span></div>`).join(''):'研究テーマはまだありません。';drawChart('miniChart',14)}
@@ -409,7 +229,7 @@ function copyTutorPrompt(){let t=tutorText();if(navigator.clipboard?.writeText)n
 function openTutor(){copyTutorPrompt();window.open('https://chatgpt.com/','_blank','noopener')}
 function askLessonTutor(){document.getElementById('tutorQuestion').value=`${activeLesson.chapter}「${activeLesson.title}」について、数式の導出と具体例を使って詳しく説明して。理解度を確認する問題も出して。`;closeModal('lessonModal');showView('academy');document.getElementById('tutorQuestion').focus()}
 
-function renderAll(){renderHome();renderAcademy();renderMusicRoom();renderArtRoom();renderLearning();renderNotes();renderThemes();renderTests();renderDiscoveries();renderCalendar();renderAnalytics()}
+function renderAll(){renderHome();renderAcademy();renderLearning();renderNotes();renderThemes();renderTests();renderDiscoveries();renderCalendar();renderAnalytics()}
 function del(type,id){if(!confirm('この記録を削除しますか？'))return;data[type]=data[type].filter(x=>x.id!==id);save();toast('削除しました')}
 function editNote(id){let n=data.notes.find(x=>x.id===id),f=document.getElementById('noteForm');Object.keys(n).forEach(k=>{if(f.elements[k])f.elements[k].value=n[k]});openModal('noteModal')}
 function editTheme(id){let n=data.themes.find(x=>x.id===id),f=document.getElementById('themeForm');Object.keys(n).forEach(k=>{if(f.elements[k])f.elements[k].value=n[k]});openModal('themeModal')}
