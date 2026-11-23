@@ -343,12 +343,13 @@ function showView(v){
  document.getElementById('pageTitle').textContent=({home:'ダッシュボード',academy:'宇宙学習室',music:'MUSIC STUDIO',art:'ILLUSTRATION STUDIO',news:'宇宙ニュースセンター',learning:'学習記録',calendar:'週間カレンダー',notes:'研究ノート',themes:'研究テーマ',tests:'試験・成績',discoveries:'宇宙ニュース・発見記録',analytics:'学習グラフ',settings:'システム設定'})[v];
  renderAll();window.scrollTo(0,0);
 }
-document.getElementById('nav').addEventListener('click',e=>{
- let b=e.target.closest('button[data-view]');
- if(b){showView(b.dataset.view);return}
- let a=e.target.closest('button[data-anchor]');
- if(a){document.getElementById(a.dataset.anchor)?.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('.nav button[data-anchor]').forEach(x=>x.classList.toggle('active',x===a))}
-});
+/* Navigation handler on the document so it survives sidebar menu rebuilds */
+document.addEventListener('click',e=>{
+ let b=e.target.closest('#nav button[data-view]');
+ if(b){e.preventDefault();showView(b.dataset.view);return}
+ let a=e.target.closest('#nav button[data-anchor]');
+ if(a){e.preventDefault();document.getElementById(a.dataset.anchor)?.scrollIntoView({behavior:'smooth',block:'start'});document.querySelectorAll('#nav button[data-anchor]').forEach(x=>x.classList.toggle('active',x===a))}
+},true);
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
 let editingStudyId=null;
 function editStudy(id){let x=data.studies.find(v=>String(v.id)===String(id));if(!x){toast('編集する学習記録が見つかりません');return}editingStudyId=x.id;let f=document.getElementById('studyForm');for(let k of ['date','minutes','category','xp','title','memo']){if(f.elements[k])f.elements[k].value=x[k]??''}document.querySelector('#studyModal h3').textContent='学習記録を編集';let submit=f.querySelector('button[type=submit],button:not([type])');if(submit)submit.textContent='変更を保存';openModal('studyModal')}
